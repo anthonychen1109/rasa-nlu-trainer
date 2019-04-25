@@ -1,14 +1,17 @@
 // @flow
 
-import React, { Component } from 'react';
-import { Button, Icon } from 'antd'
-import { connect } from 'react-redux'
 import * as actions from '../state/actions'
-import isOnline from '../utils/isOnline'
+
+import { Button, Icon } from 'antd'
+import React, { Component } from 'react';
+
 import ClearButton from './ClearButton'
 import FileReaderInput from 'react-file-reader-input'
-import { saveAs } from 'file-saver'
+import { connect } from 'react-redux'
+import convertData from '../utils/convertData'
 import generateExport from '../utils/generateExport'
+import isOnline from '../utils/isOnline'
+import { saveAs } from 'file-saver'
 
 const mapState = (state) => ({
   filename: state.filename || 'loading...',
@@ -37,6 +40,7 @@ const styles = {
 }
 
 class TopBar extends Component {
+  
   handleFileInputChange(_, results) {
     const [e, file] = results[0]
     let data
@@ -50,6 +54,11 @@ class TopBar extends Component {
     data.rasa_nlu_data.common_examples = data.rasa_nlu_data.common_examples || []
     this.props.fetchData(file.name, data)
   }
+
+  handleConvertData() {
+    convertData()
+  }
+
   render() {
     const { filename, isUnsaved, save, openAddModal } = this.props
 
@@ -105,6 +114,13 @@ class TopBar extends Component {
         </Button>
         {fileButtons}
         <ClearButton style={ styles.button }/>
+        <Button
+          style={ styles.button }
+          type='primary'
+          onClick={() => this.handleConvertData()}
+          >
+          Convert Data
+        </Button>
       </div>
     )
   }

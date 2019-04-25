@@ -1,9 +1,11 @@
 // @flow
 
-import React, { Component } from 'react';
-import { Button, Popover } from 'antd'
-import { connect } from 'react-redux'
 import * as actions from '../state/actions'
+
+import { Button, Popover } from 'antd'
+import React, { Component } from 'react';
+
+import { connect } from 'react-redux'
 
 const mapActions = dispatch => ({
   reset: () => {

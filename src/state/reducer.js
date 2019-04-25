@@ -1,22 +1,22 @@
+import {
+  CLOSE_ADD_MODAL,
+  COLLAPSE,
+  DELETE_EXAMPLE,
+  EDIT,
+  EXPAND,
+  FETCH_DATA,
+  OPEN_ADD_MODAL,
+  RESET,
+  SAVE_AND_CLOSE_ADD_MODAL,
+  SAVING_DONE,
+  SET_SELECTION,
+} from './actions'
+
 // @flow
 import immutable from 'object-path-immutable'
-import testData from './testData.json'
 import isOnline from '../utils/isOnline'
 import pick from 'lodash/pick'
-
-import {
-  EDIT,
-  DELETE_EXAMPLE,
-  SET_SELECTION,
-  FETCH_DATA,
-  SAVING_DONE,
-  EXPAND,
-  COLLAPSE,
-  OPEN_ADD_MODAL,
-  CLOSE_ADD_MODAL,
-  SAVE_AND_CLOSE_ADD_MODAL,
-  RESET,
-} from './actions'
+import testData from './testData.json'
 
 let exampleIDCounter = 0
 
